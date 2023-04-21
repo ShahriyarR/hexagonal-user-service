@@ -9,6 +9,9 @@ readme = "README.md"
 license = {file = "LICENSE"}
 classifiers = ["License :: OSI Approved :: MIT License"]
 dynamic = ["version", "description"]
+dependencies = [
+    "eventsourcing >=9.2.19",
+]
 
 [project.urls]
 Home = "https://github.com/ShahriyarR/hexagonal-user-login"
