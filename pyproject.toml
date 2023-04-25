@@ -11,6 +11,8 @@ classifiers = ["License :: OSI Approved :: MIT License"]
 dynamic = ["version", "description"]
 dependencies = [
     "eventsourcing >=9.2.19",
+    "marshmallow >=3.19.0",
+    "readonce >=1.0.2",
 ]
 
 [project.urls]

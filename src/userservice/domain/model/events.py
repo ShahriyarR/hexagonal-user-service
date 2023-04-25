@@ -1,5 +1,7 @@
 from eventsourcing.domain import AggregateCreated, AggregateEvent
 
+from userservice.domain.model.domain import Password
+
 
 class Registered(AggregateCreated):
     full_name: str
