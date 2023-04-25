@@ -11,19 +11,17 @@ class User(Aggregate):
     def __init__(self, full_name: str, email: str, password: str):
         self.full_name = full_name
         self.email = email
-        self.password = password
+        self.password = Password(password)
         self.is_active = True
 
     @classmethod
-    def register(cls, full_name: str, email: str, password: Password) -> "User":
-        if not isinstance(password, Password):
-            raise TypeError("Wrong password type was provided!")
+    def register(cls, full_name: str, email: str, password: str) -> "User":
         return cls._create(
             Registered,
             id=uuid4(),
             full_name=full_name,
             email=email,
-            password=password.get_secret(),
+            password=password,
         )
 
     def update(self, full_name: str) -> None:
