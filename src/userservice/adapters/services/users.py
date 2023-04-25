@@ -28,4 +28,10 @@ class UsersService(Application):
         aggregate = self.get_user(user_id)
         aggregate.update(full_name)
         self.save(aggregate)
-        return self.get_user(user_id)
+        return aggregate
+
+    def deactivate_user(self, user_id: UUID) -> User:
+        aggregate = self.get_user(user_id)
+        aggregate.deactivate()
+        self.save(aggregate)
+        return aggregate
