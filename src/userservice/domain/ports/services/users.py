@@ -5,8 +5,8 @@ from userservice.domain.model.aggregate import User
 
 
 class UsersServiceInterface(ABC):
-    def register_user(self, full_name: str, email: str) -> UUID:
-        return self._register_user(full_name, email)
+    def register_user(self, full_name: str, email: str, password: str) -> UUID:
+        return self._register_user(full_name, email, password)
 
     def get_user(self, user_id: UUID) -> User:
         return self._get_user(user_id)
@@ -18,7 +18,7 @@ class UsersServiceInterface(ABC):
         return self._deactivate_user(user_id)
 
     @abstractmethod
-    def _register_user(self, full_name: str, email: str) -> UUID:
+    def _register_user(self, full_name: str, email: str, password: str) -> UUID:
         raise NotImplementedError
 
     @abstractmethod

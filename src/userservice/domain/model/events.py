@@ -4,6 +4,7 @@ from eventsourcing.domain import AggregateCreated, AggregateEvent
 class Registered(AggregateCreated):
     full_name: str
     email: str
+    password: str
 
 
 class UserUpdated(AggregateEvent):

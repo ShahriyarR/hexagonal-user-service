@@ -8,10 +8,11 @@ from userservice.domain.ports.services.users import UsersServiceInterface
 
 
 class UsersService(Application, UsersServiceInterface):
-    def _register_user(self, full_name: str, email: str) -> UUID:
+    def _register_user(self, full_name: str, email: str, password: str) -> UUID:
         user = User.register(
             full_name=full_name,
             email=email,
+            password=password,
         )
         self.save(user)
         return user.id
