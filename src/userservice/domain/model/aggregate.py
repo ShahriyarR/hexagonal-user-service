@@ -2,9 +2,9 @@ from uuid import uuid4
 
 from eventsourcing.domain import Aggregate
 
-from userservice.domain.model.domain import Password
 from userservice.domain.model.events import (Registered, UserDeactivated,
                                              UserUpdated)
+from userservice.domain.model.model import Password
 
 
 class User(Aggregate):

@@ -2,7 +2,7 @@ import pytest
 from readonce import UnsupportedOperationException
 
 from userservice.domain.model.aggregate import User
-from userservice.domain.model.domain import Password
+from userservice.domain.model.model import Password
 
 
 def test_if_aggregate_created():
