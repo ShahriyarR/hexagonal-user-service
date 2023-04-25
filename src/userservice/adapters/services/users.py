@@ -23,3 +23,9 @@ class UsersService(Application):
         else:
             assert isinstance(aggregate, User)
             return aggregate
+
+    def update_user(self, user_id: UUID, full_name: str) -> User:
+        aggregate = self.get_user(user_id)
+        aggregate.update(full_name)
+        self.save(aggregate)
+        return self.get_user(user_id)

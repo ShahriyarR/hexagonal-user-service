@@ -13,3 +13,15 @@ def test_get_user():
     user_ = users.get_user(user_id)
     assert user_.is_active
     assert user_.email == "rzayev.sehriyar@gmail.com"
+
+
+def test_update_user():
+    users = UsersService()
+    user_id = users.register_user("Shako Rzayev", "rzayev.sehriyar@gmail.com")
+    user_ = users.get_user(user_id)
+    assert user_.is_active
+    assert user_.full_name == "Shako Rzayev"
+    users.update_user(user_id, "Shahriyar Rzayev")
+    user_ = users.get_user(user_id)
+    assert user_.is_active
+    assert user_.full_name == "Shahriyar Rzayev"
