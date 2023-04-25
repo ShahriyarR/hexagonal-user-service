@@ -1,19 +1,23 @@
+import logging
 from uuid import UUID
 
 from eventsourcing.application import AggregateNotFound, Application
 
 from userservice.domain.model.aggregate import User
+from userservice.domain.model.domain import Password
 from userservice.domain.model.exceptions import UserAccountNotFoundError
+from userservice.domain.model.schemas import UserCreateDTO
 from userservice.domain.ports.services.users import UsersServiceInterface
+
+logger = logging.getLogger(__file__)
 
 
 class UsersService(Application, UsersServiceInterface):
     def _register_user(self, full_name: str, email: str, password: str) -> UUID:
-        user = User.register(
-            full_name=full_name,
-            email=email,
-            password=password,
-        )
+        schema = UserCreateDTO()
+        data_ = {"full_name": full_name, "email": email, "password": Password(password)}
+        result = schema.load(data_)
+        user = User.register(**result)
         self.save(user)
         return user.id
 

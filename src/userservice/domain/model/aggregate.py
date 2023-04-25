@@ -2,10 +2,9 @@ from uuid import uuid4
 
 from eventsourcing.domain import Aggregate
 
+from userservice.domain.model.domain import Password
 from userservice.domain.model.events import (Registered, UserDeactivated,
                                              UserUpdated)
-
-from userservice.domain.model.domain import Password
 
 
 class User(Aggregate):
@@ -17,6 +16,8 @@ class User(Aggregate):
 
     @classmethod
     def register(cls, full_name: str, email: str, password: Password) -> "User":
+        if not isinstance(password, Password):
+            raise TypeError("Wrong password type was provided!")
         return cls._create(
             Registered,
             id=uuid4(),

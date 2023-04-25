@@ -1,11 +1,10 @@
 from userservice.adapters.services.users import UsersService
-from userservice.domain.model.domain import Password
 
 
 def test_user_is_saved():
     users = UsersService()
     user_id = users.register_user(
-        "Shako Rzayev", "rzayev.sehriyar@gmail.com", password=Password("12345")
+        "Shako Rzayev", "rzayev.sehriyar@gmail.com", password="12345"
     )
     assert user_id
 
@@ -13,7 +12,7 @@ def test_user_is_saved():
 def test_get_user():
     users = UsersService()
     user_id = users.register_user(
-        "Shako Rzayev", "rzayev.sehriyar@gmail.com", password=Password("12345")
+        "Shako Rzayev", "rzayev.sehriyar@gmail.com", password="12345"
     )
     user_ = users.get_user(user_id)
     assert user_.is_active
@@ -23,7 +22,7 @@ def test_get_user():
 def test_update_user():
     users = UsersService()
     user_id = users.register_user(
-        "Shako Rzayev", "rzayev.sehriyar@gmail.com", password=Password("12345")
+        "Shako Rzayev", "rzayev.sehriyar@gmail.com", password="12345"
     )
     user_ = users.get_user(user_id)
     assert user_.is_active
@@ -37,7 +36,7 @@ def test_update_user():
 def test_deactivate_user():
     users = UsersService()
     user_id = users.register_user(
-        "Shako Rzayev", "rzayev.sehriyar@gmail.com", password=Password("12345")
+        "Shako Rzayev", "rzayev.sehriyar@gmail.com", password="12345"
     )
     user_ = users.get_user(user_id)
     assert user_.is_active
